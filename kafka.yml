@@ -19,7 +19,7 @@ spec:
     - broker
   storage:
     type: persistent-claim
-    size: 50Gi
+    size: 10Gi
     class: local-path
     deleteClaim: false
 ---
@@ -80,8 +80,6 @@ apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   name: kafka-exporter-pods
-  labels:
-    release: monitoring
 spec:
   namespaceSelector:
     matchNames:
