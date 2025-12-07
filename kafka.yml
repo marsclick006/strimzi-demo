@@ -6,6 +6,13 @@ metadata:
   labels:
     strimzi.io/cluster: my-cluster
 spec:
+  resources:
+    requests:
+      cpu: 1
+      memory: 2Gi
+    limits:
+      cpu: 2
+      memory: 4Gi
   replicas: 1
   roles:
     - controller
@@ -23,6 +30,16 @@ metadata:
   name: my-cluster
   namespace: kafka
 spec:
+  kafkaExporter:
+    topicRegex: ".*"
+    groupRegex: ".*"
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 200m
+        memory: 256Mi
   kafka:
     version: 4.1.0
     listeners:
