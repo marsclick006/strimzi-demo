@@ -10,12 +10,10 @@ spec:
     - controller
     - broker
   storage:
-    type: jbod
-    volumes:
-      - id: 0
-        type: persistent-claim
-        size: 50Gi
-        deleteClaim: false
+    type: persistent-claim
+    size: 50Gi
+    class: local-path
+    deleteClaim: false
 ---
 
 apiVersion: kafka.strimzi.io/v1
