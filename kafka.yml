@@ -2,7 +2,7 @@ apiVersion: kafka.strimzi.io/v1
 kind: KafkaNodePool
 metadata:
   name: dual-role
-  namespace: kafa
+  namespace: kafka
   labels:
     strimzi.io/cluster: my-cluster
 spec:
@@ -57,3 +57,22 @@ spec:
   replicas: 1
   config:
     min.insync.replicas: 1
+---
+
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: kafka-exporter-pods
+  labels:
+    release: monitoring
+spec:
+  namespaceSelector:
+    matchNames:
+      - kafka
+  selector:
+    matchLabels:
+      strimzi.io/name: my-cluster-kafka-exporter
+  podMetricsEndpoints:
+    - port: tcp-prometheus
+      path: /metrics
+      interval: 10s
