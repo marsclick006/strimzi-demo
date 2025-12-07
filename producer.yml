@@ -25,7 +25,7 @@ spec:
                 echo "💥 Sending messages..."
                 /opt/kafka/bin/kafka-producer-perf-test.sh \
                   --topic perf-test \
-                  --num-records 10000000 \
+                  --num-records 10000 \
                   --record-size 10 \
                   --throughput -1 \
                   --producer-props \

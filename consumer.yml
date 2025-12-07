@@ -27,7 +27,7 @@ spec:
                   --bootstrap-server my-cluster-kafka-bootstrap:9092 \
                   --topic perf-test \
                   --group perf-consumer-group \
-                  --messages 10000000 \
+                  --messages 1000 \
                   --timeout 50000 \
                   --reporting-interval 1000 \
                   --fetch-size 10485760 \
