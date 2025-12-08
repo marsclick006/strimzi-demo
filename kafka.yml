@@ -8,11 +8,11 @@ metadata:
 spec:
   resources:
     requests:
-      cpu: 1000m
-      memory: 2Gi
+      cpu: 100m
+      memory: 100Mi
     limits:
-      cpu: 2000m
-      memory: 4Gi
+      cpu: 500m
+      memory: 1Gi
   replicas: 1
   roles:
     - controller
@@ -80,13 +80,16 @@ apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   name: kafka-exporter-pods
+  namespace: kafka
+  labels:
+    release: kube-prometheus-stack
 spec:
   namespaceSelector:
     matchNames:
       - kafka
   selector:
     matchLabels:
-      strimzi.io/name: my-cluster-kafka-exporter
+      strimzi.io/cluster: my-cluster
   podMetricsEndpoints:
     - port: tcp-prometheus
       path: /metrics
