@@ -1,0 +1,8 @@
+mirrors:
+  "quay.io":
+    endpoint:
+      - "http://quay.io"
+configs:
+  quay.io:
+    tls:
+      insecure_skip_verify: true
